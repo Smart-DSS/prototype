@@ -2,6 +2,10 @@
 
 #venv
 venv
+.venv
+
+# server
+server/__pycache__
 
 # dependencies
 client/node_modules
