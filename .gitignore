@@ -4,6 +4,8 @@
 venv
 .venv
 
+.env.local
+
 # server
 server/__pycache__
 
