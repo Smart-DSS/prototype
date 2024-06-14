@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
+import DashboardHeader from "./DashboardHeader";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -19,7 +20,7 @@ const Navbar = () => {
     },
     {
       id: 3,
-      link: "portfolio",
+      link: "dashboard",
     },
     {
       id: 4,
@@ -50,12 +51,12 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="flex justify-between items-center w-full h-20 px-4 text-white bg-black nav">  
-    {/* addign fixed caused problem */}
+    <div className="flex justify-between items-center w-full h-20 px-4 text-white bg-black nav fixed md:sticky">
+      {/* addign fixed caused problem */}
       <div>
         <Image
-        //   src={"/logo.svg"}
-        src={"/logo_nitc.png"}
+          //   src={"/logo.svg"}
+          src={"/logo_nitc.png"}
           width={100}
           height={100}
           alt="logo"
@@ -67,11 +68,14 @@ const Navbar = () => {
         {links.map(({ id, link }) => (
           <li
             key={id}
-            className="nav-links px-4 cursor-pointer capitalize font-medium text-gray-500 hover:scale-105 hover:text-white duration-200 link-underline"
+            className="nav-links px-4 cursor-pointer capitalize font-medium text-gray-500 hover:scale-105 hover:text-white duration-200 link-underline flex flex-col justify-center"
           >
             <Link href={link}>{link}</Link>
           </li>
         ))}
+        <li key={"dashboardHeader"} className="nav-links cursor-pointer flex flex-col justify-center">
+          <DashboardHeader />
+        </li>
       </ul>
 
       <div
