@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-import DashboardHeader from "./DashboardHeader";
+import DashboardHeader from "../(routes)/dashboard/_components/DashboardHeader";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -12,24 +12,24 @@ const Navbar = () => {
   const links = [
     {
       id: 1,
-      link: "home",
-    },
-    {
-      id: 2,
-      link: "about",
-    },
-    {
-      id: 3,
       link: "dashboard",
     },
+    // {
+    //   id: 2,
+    //   link: "about",
+    // },
     {
-      id: 4,
-      link: "experience",
+      id: 2,
+      link: "data",
     },
-    {
-      id: 5,
-      link: "contact",
-    },
+    // {
+    //   id: 4,
+    //   link: "docs",
+    // },
+    // {
+    //   id: 5,
+    //   link: "contact",
+    // },
   ];
 
   // Function to hide nav on resize
@@ -73,7 +73,10 @@ const Navbar = () => {
             <Link href={link}>{link}</Link>
           </li>
         ))}
-        <li key={"dashboardHeader"} className="nav-links cursor-pointer flex flex-col justify-center">
+        <li
+          key={"dashboardHeader"}
+          className="nav-links cursor-pointer flex flex-col justify-center"
+        >
           <DashboardHeader />
         </li>
       </ul>
