@@ -3,14 +3,13 @@
 import React, { useEffect, useState } from "react";
 import { get, getDatabase, ref } from "firebase/database";
 import { app } from "@/config/FirebaseConfig";
-import DataPage from "@/app/_components/DataPage";
-import DashboardHeader from "./_components/DashboardHeader";
-import Navbar from "./_components/Navbar";
+import Navbar from "../../_components/Navbar";
+import Head from "next/head";
 
 const page = () => {
   const db = getDatabase(app);
   // const [message, setMessage] = useState("loading");
-  const [jsonData, setJsonData] = useState();
+
   const [name, setName] = useState();
   const [phone, setPhone] = useState();
 
@@ -34,16 +33,23 @@ const page = () => {
 
   useEffect(() => {
     getEventDetails();
-    fetch("http://localhost:8080//api/home")
-      .then((response) => response.json())
-      .then((data) => setJsonData(data));
   }, []);
+
   return (
     <div>
-      <Navbar/>
+      <Navbar />
       <div>
         Hi {name}, your mobile number {phone} is fetched directly from firebase
-        <DataPage data={jsonData} />
+        <Head>
+          <title>Detected Persons Map</title>
+        </Head>
+        <div className="flex justify-center p-5">
+          <iframe
+            src="/detected_persons_map.html"
+            className="w-full h-[75vh] border border-gray-300 rounded-lg shadow-lg"
+            title="Detected Persons Map"
+          ></iframe>
+        </div>
       </div>
     </div>
   );
