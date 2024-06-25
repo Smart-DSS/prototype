@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-import DashboardHeader from "../(routes)/dashboard/_components/DashboardHeader";
+import DashboardHeader from "./DashboardHeader";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -107,6 +107,7 @@ const Navbar = () => {
               and predictive algorithms.
             </h2>
           </div>
+          {/* <div> */}
           {/* <div className="flex felx-col justify-center w-[400px] h-[200px] rounded-3xl bg-[#FFFFFF] shadow-[inset_0_-2px_4px_rgba(0,0,0,0.6)]"> */}
           <div
             className="flex flex-col justify-center w-[400px] h-[200px] rounded-3xl bg-[#FFFFFF]"

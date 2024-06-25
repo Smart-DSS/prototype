@@ -4,10 +4,17 @@ import React, { useEffect, useState } from "react";
 import { get, getDatabase, ref } from "firebase/database";
 import { app } from "@/config/FirebaseConfig";
 import Navbar from "../../_components/Navbar";
-import Head from "next/head";
 import Footer from "@/app/_components/Footer";
 import ShareFeedback from "./_components/ShareFeedback";
 import DisclaimerQuote from "./_components/DisclaimerQuote";
+import Head from "next/head";
+import dynamic from "next/dynamic";
+import MapComponent from "./_components/MapComponent";
+import Procedure from "./_components/ProcedureComponent";
+
+// const MapComponent = dynamic(() => import("./_components/MapComponent"), {
+//   ssr: false,
+// });
 
 const page = () => {
   const db = getDatabase(app);
@@ -50,24 +57,22 @@ const page = () => {
           </div>
         </div>
         {/* Hi {name}, your mobile number {phone} is fetched directly from firebase */}
-        {/* <Head>
-          <title>Detected Persons Map</title>border-top: 20px solid #FF000080
-        </Head> */}
         <div className=" p-20 bg-[#F0F0F0] rounded-t-3xl">
-          <div className="justify-between lg:flex">
-            <iframe
-              src="/detected_persons_map.html"
-              className="w-full lg:w-[50%] h-[75vh] border border-gray-400 rounded-lg shadow-lg"
-              title="Detected Persons Map"
-            ></iframe>
-            <div>hello</div>
+          {/* <div className="justify-between lg:flex"> */}
+          <div className="grid grid-col-1 md:grid-cols-2 gap-4">
+            <MapComponent />
+            <div className="flex flex-col gap-4">
+              <Procedure count={1}/>
+              <Procedure count={2}/>
+              <Procedure count={3}/>
+            </div>
           </div>
           <div className="pt-36 flex justify-center">
-            <ShareFeedback/>
+            <ShareFeedback />
           </div>
         </div>
       </div>
-      <DisclaimerQuote/>
+      <DisclaimerQuote />
       <Footer />
     </div>
   );
