@@ -1,50 +1,16 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
-import { get, getDatabase, ref } from "firebase/database";
-import { app } from "@/config/FirebaseConfig";
+import React from "react";
 import Navbar from "../../_components/Navbar";
 import Footer from "@/app/_components/Footer";
 import ShareFeedback from "./_components/ShareFeedback";
 import DisclaimerQuote from "./_components/DisclaimerQuote";
-import Head from "next/head";
-import dynamic from "next/dynamic";
-import MapComponent from "./_components/MapComponent";
 import Procedure from "./_components/ProcedureComponent";
+import MapComponent from "./_components/MapComponent";
 
 // const MapComponent = dynamic(() => import("./_components/MapComponent"), {
 //   ssr: false,
 // });
 
 const page = () => {
-  const db = getDatabase(app);
-  // const [message, setMessage] = useState("loading");
-
-  const [name, setName] = useState();
-  const [phone, setPhone] = useState();
-
-  const getEventDetails = async () => {
-    const dbRef = ref(db, "/");
-    get(dbRef)
-      .then((snapshot) => {
-        if (snapshot.exists()) {
-          const data = snapshot.val();
-          console.log(data);
-          setName(data.name);
-          setPhone(data.phone);
-        } else {
-          console.log("No data available");
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
-
-  useEffect(() => {
-    getEventDetails();
-  }, []);
-
   return (
     <div>
       <Navbar />
@@ -60,7 +26,7 @@ const page = () => {
         <div className=" p-20 bg-[#F0F0F0] rounded-t-3xl">
           {/* <div className="justify-between lg:flex"> */}
           <div className="grid grid-col-1 md:grid-cols-2 gap-4">
-            <MapComponent />
+            <MapComponent/>
             <div className="flex flex-col gap-4">
               <Procedure count={1}/>
               <Procedure count={2}/>

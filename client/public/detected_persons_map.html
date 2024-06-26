@@ -115,6 +115,7 @@
     fetch("data.json")
       .then((response) => response.json())
       .then((data) => {
+        console.log("html: ",data)
         // Create a heat map layer with the data
         var heat_map_13d53ba31d913a479a072106b5c1f597 = L.heatLayer(data, {
           blur: 15,
