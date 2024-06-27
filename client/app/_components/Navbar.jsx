@@ -40,7 +40,7 @@ const Navbar = () => {
 
   return (
     <div
-      className="w-full h-[450px] px-4 text-white bg-cover bg-center rounded-b-xl nav fixed md:sticky animate-fadeInDown"
+      className="w-full h-screen px-4 text-white bg-cover bg-center rounded-b-xl nav animate-fadeInDown" // h-[450px] fixed md:sticky
       style={{
         backgroundImage: "url('/background.svg')",
       }}

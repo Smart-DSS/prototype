@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useEffect, useRef, useState } from "react";
 import "leaflet/dist/leaflet.css";
@@ -9,6 +9,7 @@ import { app } from "@/config/FirebaseConfig";
 
 export default function MapComponent() {
   const mapRef = useRef(null);
+  const origin = [11.322670519283392, 75.9365477879981];
 
   const db = getDatabase(app);
   const [latLongPoints, setLatLongPoints] = useState([
@@ -31,7 +32,7 @@ export default function MapComponent() {
           mapRef.current = L.map("map", {
             center: [11.322670519283392, 75.9365477879981],
             crs: L.CRS.EPSG3857,
-            zoom: 30,
+            zoom: 12,
             zoomControl: true,
             preferCanvas: false,
           });
@@ -69,6 +70,34 @@ export default function MapComponent() {
           }).addTo(mapRef.current);
 
           heat_map.addTo(mapRef.current);
+
+          // Add custom control to go back to origin
+          L.Control.GoToOrigin = L.Control.extend({
+            onAdd: function (map) {
+              const button = L.DomUtil.create("button", "leaflet-bar");
+              button.innerHTML = "Go to Origin";
+              button.style.backgroundColor = "white";
+              button.style.width = "100px";
+              button.style.height = "30px";
+              button.style.cursor = "pointer";
+
+              L.DomEvent.on(button, "click", function () {
+                map.setView(origin, 12);
+              });
+
+              return button;
+            },
+
+            onRemove: function (map) {
+              // Nothing to do here
+            },
+          });
+
+          L.control.goToOrigin = function (opts) {
+            return new L.Control.GoToOrigin(opts);
+          };
+
+          L.control.goToOrigin({ position: "topright" }).addTo(mapRef.current);
         }
       })
       .catch((error) => {
@@ -86,11 +115,13 @@ export default function MapComponent() {
   }, []);
 
   return (
-    <div className="bg-black rounded-2xl pr-1 pb-2">
-      <div
-        id="map"
-        className="w-full h-[75vh] border border-gray-400 rounded-lg shadow-lg"
-      ></div>
+    <div className="w-full md:h-screen p-3 md:p-16">
+      <div className="bg-black rounded-2xl pr-1 pb-2 shadow-lg">
+        <div
+          id="map"
+          className="w-full h-[60vh] md:h-[90vh] border border-gray-400 rounded-lg shadow-lg"
+        ></div>
+      </div>
     </div>
   );
 }
