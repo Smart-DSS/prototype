@@ -16,29 +16,29 @@ const Footer = () => {
       }}
     >
       <footer class="relative w-full">
-        <div class="w-full px-8 mx-auto max-w-7xl">
-          <div class="grid justify-between grid-cols-1 gap-4 md:grid-cols-2">
+        <div class="w-full px-2 md:px-8 mx-auto max-w-7xl">
+          <div class="grid justify-between grid-cols-2">
             <div class="flex flex-col justify-end py-5">
-              <div className="flex gap-4 text-blue-gray-900 sm:justify-start">
-                {footerIcons.map((item)=>(
+              <div className="flex gap-4 text-blue-gray-900 justify-start">
+                {footerIcons.map((item) => (
                   <a
-                  key={item}
-                  href="#"
-                  class="block font-sans text-base antialiased font-light leading-relaxed transition-opacity text-inherit opacity-80 hover:opacity-100"
-                >
-                  <svg
-                    class="w-10 h-10"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
+                    key={item}
+                    href="#"
+                    class="block font-sans text-base antialiased font-light leading-relaxed transition-opacity text-inherit opacity-80 hover:opacity-100"
                   >
-                    <path
-                      fill-rule="evenodd"
-                      d={item}
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </a>
+                    <svg
+                      class="w-5 h-5 md:w-10 md:h-10"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d={item}
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </a>
                 ))}
                 {/* <p class="block mb-4 font-sans text-sm antialiased font-normal leading-normal text-center text-blue-gray-900 md:mb-0">
                 © 2023 <a href="https://material-tailwind.com/">NITC</a>. All
@@ -61,6 +61,10 @@ const Footer = () => {
               </ul>
             </div>
           </div>
+          <p class="block font-sans text-sm antialiased font-normal leading-normal text-center text-gray-500 pb-4">
+            © 2023 <a href="https://material-tailwind.com/">NITC</a>. All Rights
+            Reserved.
+          </p>
         </div>
       </footer>
     </div>
