@@ -99,29 +99,36 @@ const Navbar = () => {
           )}
         </div>
       </div>
-      <div className="invisible md:visible">
-        <div className="flex justify-between items-center px-20 py-10">
+      <Image
+        src={"/nitc.png"}
+        width={200}
+        height={100}
+        alt="logo"
+        className="w-[25%] md:hidden justify-center items-center mx-auto my-[50px] "
+      />
+      <div className="md:mt-[180px] flex flex-col justify-center md:px-20 mx-10 md:flex-row-reverse md:justify-between ">
+        <div
+          className="flex flex-col justify-center md:w-[40%] md:items-center rounded-3xl bg-[#FFFFFF]"
+          style={{ boxShadow: "4px 4px 50px 0px #00000080 inset" }}
+        >
+          <Image
+            src={"/GOI.svg"}
+            width={300}
+            height={150}
+            alt="logo"
+            className="p-5 flex justify-center items-center mx-auto "
+            // className="w-[50px] md:w-[60px] p-1"
+          />
+        </div>
+        <div className="flex md:justify-start items-center ">
           <div>
-            <h2 className="text-lg font-mono md:text-xl mt-5 text-slate-500 px-4 w-[400px]">
+            <h2 className="text-sm font-mono md:w-[60%] text-center md:text-left md:text-xl mt-[60px] text-slate-300 ">
               Enhance safety and efficiency using AI, real-time data analytics,
               and predictive algorithms.
             </h2>
           </div>
           {/* <div> */}
           {/* <div className="flex felx-col justify-center w-[400px] h-[200px] rounded-3xl bg-[#FFFFFF] shadow-[inset_0_-2px_4px_rgba(0,0,0,0.6)]"> */}
-          <div
-            className="flex flex-col justify-center w-[400px] h-[200px] rounded-3xl bg-[#FFFFFF]"
-            style={{ boxShadow: "4px 4px 50px 0px #00000080 inset" }}
-          >
-            <Image
-              src={"/GOI.svg"}
-              width={100}
-              height={100}
-              alt="logo"
-              className="p-5 w-[100px] md:w-[400px]"
-              // className="w-[50px] md:w-[60px] p-1"
-            />
-          </div>
         </div>
       </div>
     </div>
