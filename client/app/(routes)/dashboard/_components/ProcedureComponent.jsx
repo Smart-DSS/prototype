@@ -65,7 +65,7 @@ function Procedure() {
       </div>
       <div className="flex flex-col justify-center items-center">
         <ol className="list-decimal font-mono text-xs md:text-sm">
-          <div className="flex flex-col text-pretty justify-center px-6 py-6">
+          <div className="flex flex-col text-left justify-center mx-10 py-6 ">
             {array.map((items, index) => (
               <li key={index} className="pb-4 break-words">
                 {items}
