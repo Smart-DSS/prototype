@@ -41,7 +41,7 @@ function Procedure() {
     //     </ol>
     //   </div>
     // </div>
-    <div className="flex flex-col bg-white w-[90%] mx-auto justify-center shadow-lg h-auto rounded-xl">
+    <div className="flex flex-col bg-white w-[90%] lg:w-[70%] mx-auto justify-center shadow-lg h-auto rounded-xl">
       <div className="flex flex-row w-full justify-between px-4 py-4">
         <button onClick={prev} className="flex justify-start">
           <Image
