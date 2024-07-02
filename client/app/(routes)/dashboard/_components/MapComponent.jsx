@@ -61,7 +61,7 @@ export default function MapComponent() {
           tile_layer.addTo(mapRef.current);
 
           // L.heatLayer(points).addTo(mapRef.current);
-          console.log("latLongPoints before heatmap:", latLongPoints);
+          // console.log("latLongPoints before heatmap:", latLongPoints);
           var heat_map = L.heatLayer(data, {
             blur: 15,
             maxZoom: 18,
