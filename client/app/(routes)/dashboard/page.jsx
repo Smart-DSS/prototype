@@ -13,6 +13,7 @@ import { app } from "@/config/FirebaseConfig";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import { useRouter } from "next/navigation";
+import Loading from "@/app/_components/Loading";
 
 // const MapComponent = dynamic(() => import("./_components/MapComponent"), {
 //   ssr: false,
@@ -50,10 +51,7 @@ const page = () => {
 
   if (loading) {
     return (
-      <div className="h-screen flex items-center justify-center">
-        {/* <Progress value={progress} className="w-[60%]" /> */}
-        loading...
-      </div>
+      <Loading/>
     );
   }
 

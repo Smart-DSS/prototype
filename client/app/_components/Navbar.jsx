@@ -4,10 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { usePathname } from "next/navigation";
 import DashboardHeader from "./DashboardHeader";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
+  const pathname = usePathname();
 
   const links = [
     {
@@ -17,6 +19,10 @@ const Navbar = () => {
     {
       id: 2,
       link: "data",
+    },
+    {
+      id: 3,
+      link: "profile",
     },
   ];
 
@@ -40,12 +46,11 @@ const Navbar = () => {
 
   return (
     <div
-      className="w-full h-screen px-4 text-white bg-cover bg-center rounded-b-xl nav animate-fadeInDown" // h-[450px] fixed md:sticky
+      className="w-full h-screen px-1 py-2 md:px-4 text-white bg-cover bg-center rounded-b-xl nav animate-fadeInDown"
       style={{
         backgroundImage: "url('/background.svg')",
       }}
     >
-      {/* addign fixed caused problem */}
       <div className="flex justify-between items-center">
         <div>
           <Image
@@ -53,9 +58,11 @@ const Navbar = () => {
             width={100}
             height={100}
             alt="logo"
-            className="w-[100px] md:w-[500px] pt-[70px] pl-[100px]"
-            // className="w-[50px] md:w-[60px] p-1"
+            className="w-[100px] md:w-[500px] pt-[70px] pl-[100px] hidden md:block"
           />
+          <div className="block md:hidden">
+            <DashboardHeader />
+          </div>
         </div>
 
         <div>
@@ -63,9 +70,11 @@ const Navbar = () => {
             {links.map(({ id, link }) => (
               <li
                 key={id}
-                className="nav-links px-4 cursor-pointer capitalize text-xl font-semibold font-mono text-gray-500 hover:scale-105 hover:text-white duration-200 link-underline flex flex-col justify-center"
+                className={`nav-links px-4 cursor-pointer capitalize text-xl font-semibold font-mono text-gray-500 duration-200 link-underline flex flex-col justify-center hover:scale-110 ${
+                  pathname === `/${link}` ? "scale-105 text-white" : ""
+                }`}
               >
-                <Link href={link}>{link}</Link>
+                <Link href={`/${link}`}>{link}</Link>
               </li>
             ))}
             <li
@@ -78,19 +87,23 @@ const Navbar = () => {
 
           <div
             onClick={() => setNav(!nav)}
-            className="cursor-pointer pr-4 z-10 text-gray-500 md:hidden"
+            className="cursor-pointer pr-4 z-20 text-gray-300 md:hidden"
           >
+            {/* close button */}
             {nav ? <FaTimes size={30} /> : <FaBars size={30} />}
           </div>
 
           {nav && (
-            <ul className="flex flex-col justify-center items-center absolute top-0 left-0 w-full h-screen bg-gradient-to-b from-black to-gray-800 text-gray-500">
+            <ul className="z-10 flex flex-col justify-center items-center absolute top-0 right-0 w-100 h-100 bg-gradient-to-b from-black to-gray-800 text-gray-500 mt-14 mr-6 rounded-md">
+              {/* <ul className="flex flex-col justify-center items-center absolute top-0 left-0 w-full h-screen bg-gradient-to-b from-black to-gray-800 text-gray-500"> */}
               {links.map(({ id, link }) => (
                 <li
                   key={id}
-                  className="px-4 cursor-pointer capitalize py-6 text-4xl"
+                  className={`px-4 cursor-pointer capitalize py-6 text-lg font-mono hover:text-lg hover:text-white hover:border-white ${
+                    pathname === `/${link}` ? "scale-105 text-white" : ""
+                  }`}
                 >
-                  <Link onClick={() => setNav(!nav)} href={link}>
+                  <Link onClick={() => setNav(!nav)} href={`/${link}`}>
                     {link}
                   </Link>
                 </li>
@@ -117,7 +130,6 @@ const Navbar = () => {
             height={150}
             alt="logo"
             className="p-5 flex justify-center items-center mx-auto "
-            // className="w-[50px] md:w-[60px] p-1"
           />
         </div>
         <div className="flex md:justify-start items-center ">
@@ -127,8 +139,6 @@ const Navbar = () => {
               and predictive algorithms.
             </h2>
           </div>
-          {/* <div> */}
-          {/* <div className="flex felx-col justify-center w-[400px] h-[200px] rounded-3xl bg-[#FFFFFF] shadow-[inset_0_-2px_4px_rgba(0,0,0,0.6)]"> */}
         </div>
       </div>
     </div>
