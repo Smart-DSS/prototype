@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useEffect, useState } from "react";
 import Navbar from "../../_components/Navbar";
@@ -6,7 +6,7 @@ import Footer from "@/app/_components/Footer";
 import ShareFeedback from "./_components/ShareFeedback";
 import DisclaimerQuote from "./_components/DisclaimerQuote";
 import Procedure from "./_components/ProcedureComponent";
-import MapComponent from "./_components/MapComponent";
+// import MapComponent from "./_components/MapComponent";
 import AlertBox from "./_components/AlertBox";
 import ScrollingAlert from "./_components/ScrollingAlert";
 import { app } from "@/config/FirebaseConfig";
@@ -14,10 +14,11 @@ import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import { useRouter } from "next/navigation";
 import Loading from "@/app/_components/Loading";
+import dynamic from "next/dynamic";
 
-// const MapComponent = dynamic(() => import("./_components/MapComponent"), {
-//   ssr: false,
-// });
+const MapComponent = dynamic(() => import("./_components/MapComponent"), {
+  ssr: false,
+});
 
 const page = () => {
   const db = getFirestore(app);
@@ -33,7 +34,8 @@ const page = () => {
     const docRef = doc(db, "UserDetails", user.email); //business-collection name, "SF"-name of the document
     try {
       const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) { // does user exist or not
+      if (docSnap.exists()) {
+        // does user exist or not
         console.log("Document data:", docSnap.data());
         setLoading(false);
       } else {
@@ -50,11 +52,8 @@ const page = () => {
   };
 
   if (loading) {
-    return (
-      <Loading/>
-    );
+    return <Loading />;
   }
-
 
   return (
     <div>
