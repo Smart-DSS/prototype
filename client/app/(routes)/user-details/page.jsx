@@ -13,7 +13,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { incharge } from "./incharge";
+import { incharge } from "../../_components/incharge";
 
 const UserDetails = () => {
   const db = getFirestore(app);
