@@ -2,26 +2,26 @@ import { app } from "@/config/FirebaseConfig";
 import { get, getDatabase, ref } from "firebase/database";
 import React, { useEffect, useState } from "react";
 
-const AlertBox = () => {
-  // const stage = 2; // Change this value to test different stages
-  const [stage, setStage] = useState(3);
-  const db = getDatabase(app);
+const AlertBox = ({stage}) => {
+  // // const stage = 2; // Change this value to test different stages
+  // const [stage, setStage] = useState(3);
+  // const db = getDatabase(app);
 
-  const getStage = () => {
-    const dbRef = ref(db, "/stage");
-    get(dbRef).then((snapshot) => {
-      if (snapshot.exists()) {
-        var value = snapshot.val();
-        setStage(value);
-      } else {
-        console.log("No data available");
-      }
-    });
-  };
+  // const getStage = () => {
+  //   const dbRef = ref(db, "/stage");
+  //   get(dbRef).then((snapshot) => {
+  //     if (snapshot.exists()) {
+  //       var value = snapshot.val();
+  //       setStage(value);
+  //     } else {
+  //       console.log("No data available");
+  //     }
+  //   });
+  // };
   
-  useEffect(() => {
-    getStage();
-  }, []);
+  // useEffect(() => {
+  //   getStage();
+  // }, []);
 
   let alertMessage = "No Alerts At The Moment";
   let backgroundColor = "#FF00001A";
