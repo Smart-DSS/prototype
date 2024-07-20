@@ -17,6 +17,7 @@ import Loading from "@/app/_components/Loading";
 import dynamic from "next/dynamic";
 import Role from "./_components/Role";
 import LocationCards from "./_components/LocationCards";
+import EsclateBox from "./_components/EscalateBox";
 
 const MapComponent = dynamic(() => import("./_components/MapComponent"), {
   ssr: false,
@@ -93,7 +94,8 @@ const page = () => {
           <div className="flex justify-center pb-10">
             <AlertBox stage={stage} />
           </div>
-          <div className="grid md:grid-cols-2 grid-cols-1">
+          <div className="grid md:grid-cols-3 grid-cols-1 gap-5 md:gap-0">
+            <EsclateBox/>
             <Role stage={stage} />
             <Procedure />
           </div>
