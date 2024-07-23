@@ -5,7 +5,7 @@ const EscalateBox = () => {
   const router = useRouter();
 
   const handleEscalate = () => {
-    router.push('/dashboard/escalate');
+    router.push("/dashboard/escalate");
   };
 
   return (
@@ -15,13 +15,14 @@ const EscalateBox = () => {
       </div>
       <div className="px-4 py-2">
         <p className="text-gray-700 text-base">
-          If you encounter any issues that require immediate attention, please click the button below to escalate.
+          If you encounter any issues that require immediate attention, please
+          click the button below to escalate.
         </p>
       </div>
       <div className="flex justify-center px-4 py-4">
         <button
           onClick={handleEscalate}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className="py-2 px-4 bg-blue-500 text-white rounded-lg border border-transparent hover:bg-white hover:border-blue-500 hover:text-blue-500 font-semibold"
         >
           Escalate
         </button>
